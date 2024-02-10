@@ -10,6 +10,7 @@
 using namespace std;
 
 const string FILENAME = "SortingArray.txt";
+int numeroscambi = 0;
 
 void stampaVettore( string v[], int l ) {
     cout << endl;
@@ -28,8 +29,9 @@ int bubbleSort( string v[], int l ) {
                 tmp = v[j];
                 v[j] = v[j+1];
                 v[j+1] = tmp;
+                numOp++;
             }
-            numOp++;
+            
         }
         if (alreadySorted) break;
     }
@@ -40,6 +42,7 @@ void swap(string arr[] , int pos1, int pos2){
 	temp = arr[pos1];
 	arr[pos1] = arr[pos2];
 	arr[pos2] = temp;
+    numeroscambi++;
 }
 
 int partition(string arr[], int low, int high, string pivot){
@@ -87,9 +90,10 @@ int main()
     for (int i=0; i<n; i++) getline( f, vs[i] );
 
     stampaVettore(vs, n);
-    //int x = bubbleSort(vs, n);
-    quickSort(vs, 0, n-1);
-    cout << "Eseguiti " << "?" << " confronti." << endl;
+    numeroscambi = 0;
+    //quickSort(vs, 0, n-1);
+    numeroscambi = bubbleSort(vs, n);
+    cout << "Eseguiti " << numeroscambi << " scambi" << endl;
     stampaVettore(vs, n);
 
     return 0;
