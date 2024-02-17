@@ -202,5 +202,18 @@ int main(int argc, char const *argv[])
         mosse_totali += 2;
     }
 
+    if (vincitore == 1)
+    {
+        cout << "vince giocatore 1" << endl;
+    }
+    else if (vincitore == 2)
+    {
+        cout << "Vince giocatore 2" << endl;
+    }
+    else
+    {
+        cout << "Pareggio" << endl;
+    }
+
     return 0;
 }
