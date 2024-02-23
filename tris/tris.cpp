@@ -143,8 +143,50 @@ private:
             return 2;
         return 0;
     }
-    int controlla_diagonali()
+    int controlla_diagonale_1()
     {
+        int acc_uno = 0;
+        int acc_due = 0;
+        for (int i = 0; i < 3; i++)
+        {
+            int cella = griglia[i][i]
+            if (cella == 1)
+                {
+                    acc_uno++;
+                }
+            else if (cella == 2)
+                {
+                    acc_due++;
+                }
+            else
+                {
+                    return 0;
+                }
+            
+        }
+
+    }
+    int controlla_diagonale_2()
+    {
+        int acc_uno = 0;
+        int acc_due = 0;
+        for (int i = 3; i > 0; i--)
+        {
+            int cella = griglia[i][i]
+            if (cella == 1)
+            {
+                acc_uno++;
+            }
+            else if (cella == 2)
+            {
+                acc_due++;
+            }
+            else
+            {
+                return 0;
+            }
+            
+        }
 
     }
 
