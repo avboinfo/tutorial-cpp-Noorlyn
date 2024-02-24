@@ -164,12 +164,6 @@ private:
                 }
             
         }
-
-    }
-    int controlla_diagonale_2()
-    {
-        int acc_uno = 0;
-        int acc_due = 0;
         for (int i = 3; i > 0; i--)
         {
             int cella = griglia[i][i]
