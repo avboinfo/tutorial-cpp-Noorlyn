@@ -11,12 +11,12 @@ class Tris
 {
 public:
     int griglia[3][3];
-        
+
     void reset_tabella()
     {
-        for(int i = 0; i < 3; i++)
+        for (int i = 0; i < 3; i++)
         {
-            for(int j = 0; j < 3; j++)
+            for (int j = 0; j < 3; j++)
             {
                 griglia[i][j] = 0;
             }
@@ -24,13 +24,14 @@ public:
     }
     void stampa_griglia()
     {
-        for(int i = 0; i < 3; i++)
+        for (int i = 0; i < 3; i++)
         {
-            for(int j = 0; j < 3; j++)
+            for (int j = 0; j < 3; j++)
             {
-                cout<<griglia[i][j] << "\t";
+                cout << griglia[i][j] << "\t";
             }
-            cout << endl << endl;
+            cout << endl
+                 << endl;
         }
     }
 
@@ -86,6 +87,7 @@ public:
                 return risultato;
             }
         }
+        return controlla_diagonale();
     }
 
 private:
@@ -93,7 +95,7 @@ private:
     {
         int acc_uno = 0;
         int acc_due = 0;
-        for(int i = 0; i < 3; i++)
+        for (int i = 0; i < 3; i++)
         {
             int cella = griglia[i][col];
             if (cella == 1)
@@ -109,10 +111,10 @@ private:
                 return 0;
             }
         }
-        
-        if(acc_uno == 3)
+
+        if (acc_uno == 3)
             return 1;
-        if(acc_due == 3)
+        if (acc_due == 3)
             return 2;
         return 0;
     }
@@ -120,7 +122,7 @@ private:
     {
         int acc_uno = 0;
         int acc_due = 0;
-        for(int i = 0; i < 3; i++)
+        for (int i = 0; i < 3; i++)
         {
             int cella = griglia[riga][i];
             if (cella == 1)
@@ -136,37 +138,20 @@ private:
                 return 0;
             }
         }
-        
-        if(acc_uno == 3)
+
+        if (acc_uno == 3)
             return 1;
-        if(acc_due == 3)
+        if (acc_due == 3)
             return 2;
         return 0;
     }
-    int controlla_diagonale_1()
+    int controlla_diagonale()
     {
         int acc_uno = 0;
         int acc_due = 0;
         for (int i = 0; i < 3; i++)
         {
-            int cella = griglia[i][i]
-            if (cella == 1)
-                {
-                    acc_uno++;
-                }
-            else if (cella == 2)
-                {
-                    acc_due++;
-                }
-            else
-                {
-                    return 0;
-                }
-            
-        }
-        for (int i = 3; i > 0; i--)
-        {
-            int cella = griglia[i][i]
+            int cella = griglia[i][i];
             if (cella == 1)
             {
                 acc_uno++;
@@ -179,12 +164,38 @@ private:
             {
                 return 0;
             }
-            
         }
+        if (acc_uno == 3)
+            return 1;
+        if (acc_due == 3)
+            return 2;
+        return 0;
 
+        acc_uno = 0;
+        acc_due = 0;
+        for (int i = 0; i < 3; i++)
+        {
+            int cella = griglia[i][2 - i];
+            if (cella == 1)
+            {
+                acc_uno++;
+            }
+            else if (cella == 2)
+            {
+                acc_due++;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        if (acc_uno == 3)
+            return 1;
+        if (acc_due == 3)
+            return 2;
+        return 0;
     }
-
-}
+};
 
 int main(int argc, char const *argv[])
 {
@@ -195,12 +206,11 @@ int main(int argc, char const *argv[])
     cout << "Stato iniziale!" << endl;
     myTris.stampa_griglia();
 
-
     int x, y;
     bool mossa_valida;
     int vincitore;
-    int mosse_totali = 0;
-    while (mpsse_totali < 9)
+    int mosse_totale = 0;
+    while (mosse_totale < 9)
     {
         do
         {
@@ -211,11 +221,12 @@ int main(int argc, char const *argv[])
             cout << "y: ";
             cin >> y;
 
-            mossa_valida = myTris.giocatore_uno(x, y);/* code */
+            mossa_valida = myTris.giocatore_uno(y, x); /* code */
         } while (!mossa_valida);
-        
+        myTris.stampa_griglia();
         vincitore = myTris.controlla_vincitore();
-        if(vincitore != 0)
+        mosse_totale = mosse_totale + 1;
+        if (vincitore != 0)
             break;
 
         do
@@ -227,15 +238,16 @@ int main(int argc, char const *argv[])
             cout << "y: ";
             cin >> y;
 
-            mossa_valida = myTris.giocatore_due(x, y);
+            mossa_valida = myTris.giocatore_due(y, x);
 
         } while (!mossa_valida);
         myTris.stampa_griglia();
+        mosse_totale = mosse_totale + 1;
 
         vincitore = myTris.controlla_vincitore();
-        if(vincitore != 0)
+        if (vincitore != 0)
             break;
-        mosse_totali += 2;
+        
     }
 
     if (vincitore == 1)
