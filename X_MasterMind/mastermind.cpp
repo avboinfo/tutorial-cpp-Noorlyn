@@ -60,7 +60,13 @@ public:
     }
 
     void risultato_mossa(){
-        
+        for (int i = 0; i < DIM_MOSSA_VALIDA; i++)
+        {
+            if (codice_segreto[i] == mossa_valida[i] && )
+            {
+
+            }else if ()
+        }
     }
 
 };
