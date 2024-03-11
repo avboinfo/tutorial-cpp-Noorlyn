@@ -1,13 +1,13 @@
 /*
 **vettore.cpp
-** Classe vettore - Anna Prodigo Lobo - 04/03/2024
+** Classe Pila di interi - Anna Prodigo Lobo - 04/03/2024
 */
 
 #include <iostream>
 using namespace std;
 
 
-class Vettore {
+class Pila {
 
     private:
 
@@ -16,14 +16,14 @@ class Vettore {
 
     public:
 
-    Vettore( int dim, int delta ) {
+    Pila( int dim, int delta ) {
         this->dim = dim;
         len = 0;
         delta= 10;
         v = new int[dim];
     }
 
-    void add (int n){
+    void push (int n){
         if (len == dim) 
         { 
             cout << "estendo da "<< dim << " a " << dim+delta << endl;
@@ -39,6 +39,14 @@ class Vettore {
         len++;
     }
 
+    int pop(){
+        if (len == 0){
+            cout << "\nERRORE Pila Vuota\n";
+            return 0;
+        }
+        return v[--len];
+    }
+
     int getElement( int index ){
         return v[index];
     }
@@ -47,7 +55,7 @@ class Vettore {
         v[index] = newvalue;
     }
     void print(){
-        cout << "Contenuto del vettore: ";
+        cout << "Contenuto della Pila: ";
         for (int i = 0; i<len; i++) cout << v[i] << " ";
         cout << endl;
     }
@@ -56,14 +64,17 @@ class Vettore {
 
 int main(int argc, char * argv[]){
 
-    Vettore vett (10, 2);
+    Pila vett (10, 2);
 
     for (int i = 0; i<100; i++)
     {
-        vett.add(i);
+        vett.push(i);
     }
-    cout << vett.getElement(10) << endl;
-    vett.setElement(10, 333);
-    vett.print();
+
+    for(int i = 0; i < 110; i++)
+    {
+        cout<< vett.pop() << " ";
+    }
+    cout << endl;
 
 }
