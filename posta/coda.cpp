@@ -37,7 +37,7 @@ class Coda {
         if (start >= stop)
         {
             cout << "Coda vuota!";
-            return 
+            return 0;
         }
         int val = v[start];
         start = start + 1;
