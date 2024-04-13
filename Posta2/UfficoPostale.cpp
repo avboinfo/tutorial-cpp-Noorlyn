@@ -2,7 +2,7 @@
 #include "Coda.cpp"
 using namespace std;
 
-class ufficioPostale
+class UfficioPostale
 {
 
     private:
@@ -64,5 +64,5 @@ class ufficioPostale
             cR-> stampa;
 
         }
-
-}
+        
+};
