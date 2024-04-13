@@ -12,21 +12,21 @@ class Matrice
         int m[10][10];
 
     public:
-        Matrice(  )
+        Matrice( int n )
         {
-            for (int i = 0; i < 10, i++)
+            for (int i = 0; i < 10; i++)
             {
                 for(int j = 0; j < 10; j++)
                 {
-                    m[i][j] = 0;
+                    m[i][j] = n;
                 }
             }
         }
 
         void StampaMatrice (  )
         {
-            cout << "--------------------------------------------- " << endl;
-            for (int i = 0; i < 10, i++)
+            cout << "-------------------------------------------- " << endl << endl;
+            for (int i = 0; i < 10; i++)
             {
                 for(int j = 0; j < 10; j++)
                 {
@@ -34,9 +34,18 @@ class Matrice
                 }
                 cout << endl;
             }
-            cout << endl;
+            cout << endl << "-------------------------------------------- " << endl;
 
-        }
+        };
 
+
+
+
+};
+int main()
+{
+
+    Matrice m1 = Matrice( 80 );
+    m1.StampaMatrice();
 
 }
