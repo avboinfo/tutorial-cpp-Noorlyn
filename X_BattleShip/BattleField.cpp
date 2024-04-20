@@ -1,5 +1,5 @@
 /*
-**Matrice.cpp una classe definita da noi spupazza le matrice come nessuno mai
+**BattleField.cpp una classe definita da noi spupazza le BattleField come nessuno mai
 **Anna Prodigo Lobo - 13 / 04 / 2024
 */     
 
@@ -7,15 +7,19 @@
 using namespace std;
 
 const int DIM = 6;
+const char SHIP = 'X';
+const char MISS = 'O';
+const char HIT = '*';
+const char VOID = '_';
 
-class Matrice
+class BattleField
 {
     private:
         char m[DIM][DIM];
 
     public:
 
-        Matrice() {
+        BattleField() {
 
             for (int i = 0; i < DIM; i++)
             {
@@ -26,7 +30,7 @@ class Matrice
             }
 
         }
-        Matrice( char c )
+        BattleField( char c )
         {
             for (int i = 0; i < DIM; i++)
             {
@@ -45,7 +49,7 @@ class Matrice
         {
             m[x][y] = c;
         }
-        void StampaMatrice (  )
+        void stampa (  )
         {
             cout << "-------------------------------------------- " << endl << endl;
             for (int i = 0; i < DIM; i++)
@@ -77,7 +81,7 @@ class Matrice
             int y = rand() % (DIM - len);
             for (int i = 0; i < len; i++)
             {
-                m[x][y+i] = 'O'; 
+                m[x][y+i] = SHIP; 
             }
         }
         
@@ -91,35 +95,10 @@ class Matrice
             int y = rand() % DIM;
             for (int i = 0; i < len; i++)
             {
-                m[x+1][y] = 'O'; 
+                m[x+1][y] = SHIP; 
             }
         }
 
 
 
 };
-int main()
-{
-    srand(time(NULL));
-    Matrice mappa = Matrice( '-' );
-    Matrice campo = Matrice( '.');
-    mappa.StampaMatrice();
-    campo.placeHorizontalShip (3);
-    campo.placeVerticalShip (4);
-    campo.placeHorizontalShip (1);
-    campo.placeVerticalShip (5);
-    for (int i = 0; i < 20; i++)
-    {
-        int x = rand()% DIM;
-        int y = rand()% DIM;
-        if (campo.get( x, y) == 'O')
-        {
-            mappa.put(x,y,'*');
-        }
-    }
-
-    mappa.StampaMatrice();
-
-
-
-}
