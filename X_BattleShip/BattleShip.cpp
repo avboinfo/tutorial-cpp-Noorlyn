@@ -22,55 +22,83 @@ class BattleShip
 
     void play () {
 
-        for (int i = 0; i < 20; i++)
+        mappa.stampa();
+
+        while ( !gameOver() )
         {
-            int x = rand()% DIM;
-            int y = rand()% DIM;
-            if (campo.get(x,y)== HIT)
+            mappa.stampa();
+
+            if ( !playHand() )
             {
-                continue;
-            }
-            if (campo.get( x, y) == SHIP)
-            {
-                mappa.put(x,y,HIT);
-                campo.put(x,y,HIT);
-            }
-            else
-            {
-                mappa.put(x,y, MISS);
+                break;
             }
         }
 
-
-        mappa.stampa();
-
-        ask();
-
-        mappa.stampa();
         campo.stampa();
     }
 
-    void ask()
+    bool playHand()
     {
-        cout << "inserisci le coordinate x e yin cui sganciare la bomba: "<<endl;
+        cout << "inserisci le coordinate x e y (1 - "<< DIM << ") in cui sganciare la bomba: "<<endl;
+        
         int x,y;
         cout << "x: ";
         cin >> x;
         cout << endl;
+
+        if ( x <= 0 || x > DIM)
+        {
+            return false;
+        }
+        else
+        {
+            x--;
+        }
+
         cout << "y: ";
         cin >> y;
         cout << endl;
+
+        if ( y <= 0 || y > DIM)
+        {
+            return false;
+        }
+        else
+        {
+            y--;
+        }
+
         if (campo.get( x, y) == SHIP)
-            {
-                mappa.put(x,y,HIT);
-                campo.put(x,y,HIT);
-            }
-            else
-            {
-                mappa.put(x,y, MISS);
-            }
+        {
+            mappa.put(x,y,HIT);
+            campo.put(x,y,HIT);            
+        }
+        else
+        {
+            mappa.put(x,y, MISS);
+        }
+        return true;
 
+    }
 
+    bool gameOver ()
+    {
+        int contatore;
+        for (int i = 0; i < DIM; i++)
+        {
+            for (int j = 0; j < DIM; j++)
+            {
+                if (campo.get ( i, j) == SHIP )
+                {
+                    contatore++;
+                    if (contatore == 14)
+                    {
+                        return true;
+                    }
+                }
+                 
+            }
+        }
     }
 
 };
