@@ -8,9 +8,12 @@
 using namespace std;
 
 // input data
-string Risultato;
-int ContMIN1 = 25;
-int ContMIN2 = 25;
+string Veloce;
+string Winner;
+int ContMIN1 = 10000;
+int ContMIN2 = 10000;
+int Somma1;
+int Somma2;
 int N = 3;
 vector<int> H, V;
 
@@ -19,12 +22,10 @@ int main() {
     //  ifstream cin("input.txt");
     //  ofstream cout("output.txt");
 
-    cout << "scrivi N" << endl;
     cin >> N;
     H.resize(N);
     for (int i = 0; i < N; i++)
     {
-        cout << "scrivi H " << i+1 << ":" << endl;
         cin >> H[i];
     }
 
@@ -32,8 +33,24 @@ int main() {
 
     for (int i = 0; i < N; i++)
     {
-        cout << "scrivi V " << i+1 << ":" << endl;
         cin >> V[i];
+    }
+
+    for (int i = 0; i < N; i++)
+    {
+        Somma1 = Somma1 + H[i];
+    }
+    for (int i = 0; i < N; i++)
+    {
+        Somma2 = Somma2 + V[i];
+    }
+    if (Somma1 < Somma2)
+    {
+        Winner = "Hamilton";
+    }
+    else
+    {
+        Winner = "Verstappen";
     }
 
     for (int i = 0; i < N; i++)
@@ -52,19 +69,15 @@ int main() {
     }
     if (ContMIN1 < ContMIN2)
     {
-        Risultato = "Hammilton";
+        Veloce = "Hammilton";
     }
-    else if (ContMIN1 > ContMIN2)
+    else
     {
-        Risultato = "Verstappen";
+        Veloce = "Verstappen";
     }
-    cout << "Hamilton" << "   " << "Verstappen"<<endl;
-    for (int i = 0; i < N; i++)
-    {
-        cout << "   "<< H[i] << "\t\t" << V[i] << endl;
-    }
-
-    cout << endl << "winner: " << Risultato << endl; // print the result
+    
+    cout << Winner << endl;
+    cout << Veloce << endl; // print the result
     return 0;
 }
 
